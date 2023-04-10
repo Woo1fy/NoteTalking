@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\alarm-46.svg" />
+    <None Remove="Assets\archive-69.svg" />
+    <None Remove="Assets\brush-22.svg" />
+    <None Remove="Assets\checklist-16.svg" />
+    <None Remove="Assets\Images\pngwing.com.png" />
+    <None Remove="Assets\Images\SVG\unnamed.jpg" />
+    <None Remove="Assets\lamp-60.svg" />
+    <None Remove="Assets\list-button-outline-svgrepo-com.svg" />
+    <None Remove="Assets\menu.png" />
+    <None Remove="Assets\more-applications-1.svg" />
+    <None Remove="Assets\pencil-63.svg" />
+    <None Remove="Assets\picture-258.svg" />
+    <None Remove="Assets\Pin.svg" />
+    <None Remove="Assets\refresh-111.svg" />
+    <None Remove="Assets\search-icon.svg" />
+    <None Remove="Assets\svgviewer-output.svg" />
+    <None Remove="Assets\trash-can-31.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.19" />
+    <PackageReference Include="Avalonia.Controls.Skia" Version="0.10.18" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.19" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.19" />
+    <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.18" />
+    <PackageReference Include="Svg.Skia" Version="0.5.18" />
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+  </ItemGroup>
+</Project>
