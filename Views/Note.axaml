@@ -2,7 +2,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
              x:Class="NoteTalking.Views.Note">
-  Welcome to Avalonia!
+
+  <UserControl.Styles>
+    <Style Selector="Button">
+      <Setter Property="Background" Value="Transparent"></Setter>
+      <Setter Property="CornerRadius" Value="30"></Setter>
+    </Style>
+  </UserControl.Styles>
+
+  <StackPanel x:Name="NoteContainer" VerticalAlignment="Top" HorizontalAlignment="Left" Background="WhiteSmoke" Margin="10">
+    <Border Width="240" BorderBrush="Gray" BorderThickness="1">
+      <DockPanel>
+        <TextBlock Padding="16, 12, 16, 12" Text="TEST" DockPanel.Dock="Top" x:Name="NoteBox" TextWrapping="Wrap"></TextBlock>
+
+        <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*, *, *, *, *, *">
+          <Button Grid.Column="0">
+            <Image Source="avares://NoteTalking/Assets/Lamp.png"/>
+          </Button>
+          <Button Grid.Column="1">
+            <Image Source="avares://NoteTalking/Assets/AddUser.png"/>
+          </Button>
+          <Button Grid.Column="2">
+            <Image Source="avares://NoteTalking/Assets/ColorPalette.png"/>
+          </Button>
+          <Button Grid.Column="3">
+            <Image Source="avares://NoteTalking/Assets/Picture.png"/>
+          </Button>
+          <Button Grid.Column="4">
+            <Image Source="avares://NoteTalking/Assets/Archive.png"/>
+          </Button>
+          <Button Grid.Column="5">
+            <Image Source="avares://NoteTalking/Assets/VerticalMenu.png"/>
+          </Button>
+        </Grid>
+      </DockPanel>
+    </Border>
+  </StackPanel>
 </UserControl>

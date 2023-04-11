@@ -1,14 +1,14 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:NoteTalking.ViewModels"
+        xmlns:controls="clr-namespace:NoteTalking.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NoteTalking.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="NoteTalking"
-        Content="{Binding List}">
+        Title="NoteTalking">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -64,7 +64,7 @@
             <Image Source="avares://NoteTalking/Assets/Search.png"/>
             <!--<Image Source="{SvgImage /Assets/Images/Search.svg}"/>-->
           </Button>
-          <TextBox Background="Transparent"  VerticalContentAlignment="Center" Watermark="Поиск" BorderThickness="0" Margin="0, 0, 10, 0" Grid.Column="1"></TextBox>
+          <TextBox x:Name="SearchNoteBox" Background="Transparent"  VerticalContentAlignment="Center" Watermark="Поиск" BorderThickness="0" Margin="0, 0, 10, 0" Grid.Column="1"></TextBox>
         </Grid>
       </Border>
       <Button Grid.Column="4" Width="50">
@@ -99,7 +99,7 @@
     </Grid>
 
     <!--Body-->
-    <Grid ColumnDefinitions="60, *">
+    <Grid ColumnDefinitions="60, *, 60">
       <Grid Grid.Column="0" HorizontalAlignment="Center" RowDefinitions="15, Auto, 15, Auto, 15, Auto, 15, Auto, 15, Auto">
         <Button Grid.Row="1">
           <Image Source="avares://NoteTalking/Assets/Lamp.png"/>
@@ -120,7 +120,7 @@
       <Grid Grid.Column="1" RowDefinitions="100, *">
         <Border Background="Red" CornerRadius="10" Grid.Row="0" Width="600" Margin="0, 30, 0, 30">
           <Grid Grid.Row="0" ColumnDefinitions="*, 50, 50, 50">
-            <TextBox x:Name="NoteBox" TextWrapping="Wrap" VerticalContentAlignment="Center" BorderThickness="0" Watermark="Заметка..." Grid.Column="0"></TextBox>
+            <TextBox x:Name="AddNoteBox" TextWrapping="Wrap" VerticalContentAlignment="Center" BorderThickness="0" Watermark="Заметка..." Grid.Column="0"></TextBox>
             <Button Grid.Column="1">
               <Image Source="avares://NoteTalking/Assets/Checklist.png"/>
             </Button>
@@ -132,10 +132,8 @@
             </Button>
           </Grid>
         </Border>
-        <DockPanel x:Name="NotesPanel" Width="500" Background="ForestGreen" Grid.Row="1">
-          <StackPanel Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Background="Fuchsia" DockPanel.Dock="Left"></StackPanel>
-          <StackPanel Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Background="Fuchsia" DockPanel.Dock="Left"></StackPanel>
-        </DockPanel>
+        <WrapPanel x:Name="NotesPanel" Background="ForestGreen" Grid.Row="1">
+        </WrapPanel>
         <!--<Grid ShowGridLines="True" Grid.Row="1">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="65"/>
