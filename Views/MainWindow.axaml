@@ -4,18 +4,12 @@
         xmlns:controls="clr-namespace:NoteTalking.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" Width="1000" Height="450"
         x:Class="NoteTalking.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="NoteTalking">
-
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
+  
   <!--<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
   
   <StackPanel>
@@ -55,7 +49,7 @@
       </Button>
       
       <Image Source="avares://NoteTalking/Assets/Logo.png" Grid.Column="1"/>
-      <Label FontSize="25" VerticalContentAlignment="Center" Content="Keep" Grid.Column="2"></Label>
+      <Label Padding="0, 0, 50, 0" FontSize="25" VerticalContentAlignment="Center" Content="Keep" Grid.Column="2"></Label>
       
       <Border Margin="10" Background="Gainsboro" CornerRadius="10" Grid.Column="3">
         <!--Header elems-->
@@ -99,184 +93,40 @@
     </Grid>
 
     <!--Body-->
-    <Grid ColumnDefinitions="60, *, 60">
+    <Grid ColumnDefinitions="266, *, 60">
       <Grid Grid.Column="0" HorizontalAlignment="Center" RowDefinitions="15, Auto, 15, Auto, 15, Auto, 15, Auto, 15, Auto">
-        <Button Grid.Row="1">
-          <Image Source="avares://NoteTalking/Assets/Lamp.png"/>
-        </Button>
-        <Button Grid.Row="3">
-          <Image Source="avares://NoteTalking/Assets/Alarm.png"/>
-        </Button>
-        <Button Grid.Row="5">
-          <Image Source="avares://NoteTalking/Assets/Pencil.png"/>
-        </Button>
-        <Button Grid.Row="7">
-          <Image Source="avares://NoteTalking/Assets/Archive.png"/>
-        </Button>
-        <Button Grid.Row="9">
-          <Image Source="avares://NoteTalking/Assets/TrashCan.png"/>
-        </Button>
-      </Grid>
-      <Grid Grid.Column="1" RowDefinitions="100, *">
-        <Border Background="Red" CornerRadius="10" Grid.Row="0" Width="600" Margin="0, 30, 0, 30">
-          <Grid Grid.Row="0" ColumnDefinitions="*, 50, 50, 50">
-            <TextBox x:Name="AddNoteBox" TextWrapping="Wrap" VerticalContentAlignment="Center" BorderThickness="0" Watermark="Заметка..." Grid.Column="0"></TextBox>
-            <Button Grid.Column="1">
-              <Image Source="avares://NoteTalking/Assets/Checklist.png"/>
-            </Button>
-            <Button Grid.Column="2">
-              <Image Source="avares://NoteTalking/Assets/Brush.png"/>
-            </Button>
-            <Button Grid.Column="3">
-              <Image Source="avares://NoteTalking/Assets/Picture.png"/>
-            </Button>
+        <Button Command="{Binding ShowNotesTab}" Grid.Row="1" Height="46" Width="266">
+          <Grid ColumnDefinitions="50, *">
+            <Image Grid.Column="0" Source="avares://NoteTalking/Assets/Lamp.png"/>
+            <TextBlock Grid.Column="1" Padding="10, 0, 0, 0" VerticalAlignment="Center" Text="Заметки"></TextBlock>
           </Grid>
-        </Border>
-        <WrapPanel x:Name="NotesPanel" Background="ForestGreen" Grid.Row="1">
-        </WrapPanel>
-        <!--<Grid ShowGridLines="True" Grid.Row="1">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="65"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-          </Grid.RowDefinitions>
-
-          <Border BorderBrush="Gray" BorderThickness="1" Margin="5" Grid.Row="1" Grid.Column="1">
-            <Grid RowDefinitions="*, 40">
-              <Label Content="Test DragAndDrop" Grid.Row="0"></Label>
-
-              <Grid IsVisible="True" Grid.Row="1" ColumnDefinitions="*, *, *, *, *, *">
-                <Button Grid.Column="0">
-                  <Image Source="avares://NoteTalking/Assets/Lamp.png"/>
-                </Button>
-                <Button Grid.Column="1">
-                  <Image Source="avares://NoteTalking/Assets/AddUser.png"/>
-                </Button>
-                <Button Grid.Column="2">
-                  <Image Source="avares://NoteTalking/Assets/ColorPalette.png"/>
-                </Button>
-                <Button Grid.Column="3">
-                  <Image Source="avares://NoteTalking/Assets/Picture.png"/>
-                </Button>
-                <Button Grid.Column="4">
-                  <Image Source="avares://NoteTalking/Assets/Archive.png"/>
-                </Button>
-                <Button Grid.Column="5">
-                  <Image Source="avares://NoteTalking/Assets/VerticalMenu.png"/>
-                </Button>
-              </Grid>
-            </Grid>
-          </Border>
-
-        </Grid>-->
+        </Button>
+        <Button Command="{Binding ShowRemindersTab}" Grid.Row="3" Height="46" Width="266">
+          <Grid ColumnDefinitions="50, *">
+            <Image Grid.Column="0" Source="avares://NoteTalking/Assets/Alarm.png"/>
+            <TextBlock Grid.Column="1" Padding="10, 0, 0, 0" VerticalAlignment="Center" Text="Напоминания"></TextBlock>
+          </Grid>
+        </Button>
+        <Button Command="{Binding ShowLabelingTab}" Grid.Row="5" Height="46" Width="266">
+          <Grid ColumnDefinitions="50, *">
+            <Image Grid.Column="0" Source="avares://NoteTalking/Assets/Pencil.png"/>
+            <TextBlock Grid.Column="1" Padding="10, 0, 0, 0" VerticalAlignment="Center" Text="Изменения ярлыков"></TextBlock>
+          </Grid>
+        </Button>
+        <Button Command="{Binding ShowArchiveTab}" Grid.Row="7" Height="46" Width="266">
+          <Grid ColumnDefinitions="50, *">
+            <Image Grid.Column="0" Source="avares://NoteTalking/Assets/Archive.png"/>
+            <TextBlock Grid.Column="1" Padding="10, 0, 0, 0" VerticalAlignment="Center" Text="Архив"></TextBlock>
+          </Grid>
+        </Button>
+        <Button Command="{Binding ShowTrashTab}" Grid.Row="9" Height="46" Width="266">
+          <Grid ColumnDefinitions="50, *">
+            <Image Grid.Column="0" Source="avares://NoteTalking/Assets/TrashCan.png"/>
+            <TextBlock Grid.Column="1" Padding="10, 0, 0, 0" VerticalAlignment="Center" Text="Корзина"></TextBlock>
+          </Grid>
+        </Button>
       </Grid>
+      <UserControl Grid.Column="1" Content="{Binding Content}"></UserControl>
     </Grid>
   </StackPanel>
-
-
-  <!--<DockPanel>
-
-    <DockPanel.Styles>
-      <Style Selector="Button">
-        <Setter Property="Background" Value="Transparent"></Setter>
-      </Style>
-    </DockPanel.Styles>
-    
-    <StackPanel DockPanel.Dock="Top" Background="Yellow">
-      <Grid Height="60" ShowGridLines="True">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="40"/>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="20"/>
-          <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-
-        <Button Grid.Column="0" Width="50">
-          <Image Source="avares://NoteTalking/Assets/SideMenu.png"/>
-          -->
-        <!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>--><!--
-        </Button>
-        <Button Grid.Column="1" Width="50">
-         
-        </Button>
-        <Border Margin="10" Background="White" CornerRadius="10" Grid.Column="3">
-          <Grid ShowGridLines="True" ColumnDefinitions="50, *">
-            <Button HorizontalAlignment="Center" Grid.Column="0">
-              <Image Source="avares://NoteTalking/Assets/Search.png"/>
-              --><!--<Image Source="{SvgImage /Assets/Images/Search.svg}"/>--><!--
-            </Button>
-            <TextBox VerticalContentAlignment="Center" Watermark="Поиск" BorderThickness="0" Margin="0, 0, 10, 0" Grid.Column="1"></TextBox>
-          </Grid>
-        </Border>
-        <Button Grid.Column="4" Width="50">
-          <Image Source="avares://NoteTalking/Assets/Refresh.png"/>
-          --><!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>--><!--
-        </Button>
-        <Button Grid.Column="5" Width="50">
-          <Image Source="avares://NoteTalking/Assets/ListButtons.png"/>
-          --><!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>--><!--
-        </Button>
-        <Button Grid.Column="6" Width="50">
-          <Image Source="avares://NoteTalking/Assets/Cog.png"/>
-          --><!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>--><!--
-        </Button>
-        <Button Grid.Column="8" Width="50">
-          <Image Source="avares://NoteTalking/Assets/Applications.png"/>
-          --><!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>--><!--
-        </Button>
-        <Button Grid.Column="9" Width="50">
-          --><!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>--><!--
-        </Button>
-      </Grid>
-    </StackPanel>
-    <StackPanel DockPanel.Dock="Left" Width="60" Background="LightGray">
-      <Grid HorizontalAlignment="Center" RowDefinitions="15, Auto, 15, Auto, 15, Auto, 15, Auto, 15, Auto">
-        <Button Grid.Row="1">
-          <Image Source="avares://NoteTalking/Assets/Lamp.png"/>
-        </Button>
-        <Button Grid.Row="3">
-          <Image Source="avares://NoteTalking/Assets/Alarm.png"/>
-        </Button>
-        <Button Grid.Row="5">
-          <Image Source="avares://NoteTalking/Assets/Pencil.png"/>
-        </Button>
-        <Button Grid.Row="7">
-          <Image Source="avares://NoteTalking/Assets/Archive.png"/>
-        </Button>
-        <Button Grid.Row="9">
-          <Image Source="avares://NoteTalking/Assets/TrashCan.png"/>
-        </Button>
-      </Grid>
-    </StackPanel>
-
-    <Grid Background="Red" DockPanel.Dock="Right" RowDefinitions="100, 200">
-      <Border CornerRadius="10" Grid.Row="0" Width="600" Margin="0, 30, 0, 30" Background="White">
-        <Grid ShowGridLines="True" ColumnDefinitions="*, 50, 50, 50">
-          <TextBox VerticalContentAlignment="Center" BorderThickness="0" Watermark="Заметка..." Grid.Column="0"></TextBox>
-          <Button Grid.Column="1">
-            <Image Source="avares://NoteTalking/Assets/Checklist.png"/>
-          </Button>
-          <Button Grid.Column="2">
-            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
-          </Button>
-          <Button Grid.Column="3">
-            <Image Source="avares://NoteTalking/Assets/Picture.png"/>
-          </Button>
-        </Grid>
-      </Border>
-    </Grid>
-    
-  </DockPanel>-->
 </Window>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoteTalking.Models
+namespace NoteTalking.ViewModels
 {
-	public class Note
+	public class RemindersTabViewModel : ViewModelBase
 	{
 	}
 }

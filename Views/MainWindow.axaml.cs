@@ -20,29 +20,29 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        AddNoteBox.GotFocus += AddNoteBox_GotFocus;
-        AddNoteBox.LostFocus += AddNoteBox_LostFocus;
-		AddNoteBox.KeyUp += AddNoteBox_KeyUp;
+  //      AddNoteBox.GotFocus += AddNoteBox_GotFocus;
+  //      AddNoteBox.LostFocus += AddNoteBox_LostFocus;
+		//AddNoteBox.KeyUp += AddNoteBox_KeyUp;
 		SearchNoteBox.PropertyChanged += SearchNoteBox_PropertyChanged;
 		SearchNoteBox.AddHandler(TextInputEvent, SearchNoteBox_TextInput, RoutingStrategies.Tunnel);
 	}
 
 	private void SearchNoteBox_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
 	{
-		if (e.Property.Name != nameof(SearchNoteBox.Text)
-			|| sender is not TextBox tb
-			|| !NotesCollection.Any()) { return; }
+		//if (e.Property.Name != nameof(SearchNoteBox.Text)
+		//	|| sender is not TextBox tb
+		//	|| !NotesCollection.Any()) { return; }
 
-		var sortedCollection = NotesCollection.Where(x => x!.NoteBox.Text.Contains(e.NewValue!.ToString() ?? string.Empty, StringComparison.OrdinalIgnoreCase));
-		if (sortedCollection != null && sortedCollection.Any())
-		{
-			NotesPanel.Children.Clear();
-			NotesPanel.Children.AddRange(sortedCollection);
-			return;
-		}
+		//var sortedCollection = NotesCollection.Where(x => x!.NoteBox.Text.Contains(e.NewValue!.ToString() ?? string.Empty, StringComparison.OrdinalIgnoreCase));
+		//if (sortedCollection != null && sortedCollection.Any())
+		//{
+		//	NotesPanel.Children.Clear();
+		//	NotesPanel.Children.AddRange(sortedCollection);
+		//	return;
+		//}
 
-		NotesPanel.Children.Clear();
-		NotesPanel.Children.AddRange(NotesCollection);
+		//NotesPanel.Children.Clear();
+		//NotesPanel.Children.AddRange(NotesCollection);
 	}
 
 	private void SearchNoteBox_TextInput(object? sender, TextInputEventArgs e)
@@ -84,10 +84,10 @@ public partial class MainWindow : Window
 			note.NoteBox.Text = tb.Text;
 
 			NotesCollection.Insert(0, note);
-			NotesPanel.Children.Insert(0, NotesCollection.FirstOrDefault());
+			//NotesPanel.Children.Insert(0, NotesCollection.FirstOrDefault());
 
 
-			AddNoteBox.Text = string.Empty;
+			//AddNoteBox.Text = string.Empty;
 		}
 	}
 

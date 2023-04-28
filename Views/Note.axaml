@@ -15,7 +15,7 @@
   <StackPanel x:Name="NoteContainer" VerticalAlignment="Top" HorizontalAlignment="Left" Background="WhiteSmoke" Margin="10">
     <Border Width="240" BorderBrush="Gray" BorderThickness="1">
       <DockPanel>
-        <TextBlock Padding="16, 12, 16, 12" Text="TEST" DockPanel.Dock="Top" x:Name="NoteBox" TextWrapping="Wrap"></TextBlock>
+        <TextBlock Padding="16, 12, 16, 12" Text="TEfSTTEfSTTEfSTTEfST" DockPanel.Dock="Top" x:Name="NoteBox" TextWrapping="Wrap"></TextBlock>
 
         <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*, *, *, *, *, *">
           <Button Grid.Column="0">
