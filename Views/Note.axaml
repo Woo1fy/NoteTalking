@@ -2,9 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:NoteTalking.ViewModels"
              mc:Ignorable="d"
              x:Class="NoteTalking.Views.Note">
 
+  <Design.DataContext>
+    <viewModels:NoteViewModel/>
+  </Design.DataContext>
+  
   <UserControl.Styles>
     <Style Selector="Button">
       <Setter Property="Background" Value="Transparent"></Setter>
@@ -15,7 +20,8 @@
   <StackPanel x:Name="NoteContainer" VerticalAlignment="Top" HorizontalAlignment="Left" Background="WhiteSmoke" Margin="10">
     <Border Width="240" BorderBrush="Gray" BorderThickness="1">
       <DockPanel>
-        <TextBlock Padding="16, 12, 16, 12" Text="TEfSTTEfSTTEfSTTEfST" DockPanel.Dock="Top" x:Name="NoteBox" TextWrapping="Wrap"></TextBlock>
+        <TextBlock Padding="16, 12, 16, 12" Text="{Binding Title}" DockPanel.Dock="Top" x:Name="Title" TextWrapping="Wrap"></TextBlock>
+        <TextBlock Padding="16, 12, 16, 12" Text="{Binding Text}" DockPanel.Dock="Top" x:Name="Text" TextWrapping="Wrap"></TextBlock>
 
         <Grid DockPanel.Dock="Bottom" ColumnDefinitions="*, *, *, *, *, *">
           <Button Grid.Column="0">

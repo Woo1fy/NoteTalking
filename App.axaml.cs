@@ -4,9 +4,10 @@ using Avalonia.Markup.Xaml;
 using NoteTalking.ViewModels;
 using NoteTalking.Views;
 
+
 namespace NoteTalking;
 
-public partial class App : Application
+public class App : Application
 {
     public override void Initialize()
     {
@@ -15,14 +16,18 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        base.OnFrameworkInitializationCompleted();
-
-        if (ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop) return;
-        var db = new DataContext();
-
-        desktop.MainWindow = new MainWindow
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            DataContext = new MainWindowViewModel(db),
-        };
+            var context = new ApplicationContext();
+            
+            context.Database.EnsureCreated();
+                
+            desktop.MainWindow = new MainWindow
+            {
+                DataContext = new MainWindowViewModel(context),
+            };
+        }
+        
+        base.OnFrameworkInitializationCompleted();
     }
 }

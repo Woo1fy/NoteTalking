@@ -1,7 +1,6 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:NoteTalking.ViewModels"
-        xmlns:controls="clr-namespace:NoteTalking.Views"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" Width="1000" Height="450"
@@ -10,7 +9,11 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="NoteTalking">
   
-  <!--<TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
   
   <StackPanel>
     <StackPanel.Styles>
@@ -29,20 +32,7 @@
     </StackPanel.Styles>
 
     <!--Header-->
-    <Grid>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="60"/>
-        <ColumnDefinition Width="50"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="20"/>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="Auto"/>
-      </Grid.ColumnDefinitions>
-
+    <Grid ColumnDefinitions="60,50,Auto,*,Auto,Auto,Auto,20,Auto,Auto">
       <Button Grid.Column="0">
         <Image Source="avares://NoteTalking/Assets/SideMenu.png"/>
         <!--<Image Source="{SvgImage /Assets/Images/SideMenu.svg}"/>-->
@@ -58,7 +48,7 @@
             <Image Source="avares://NoteTalking/Assets/Search.png"/>
             <!--<Image Source="{SvgImage /Assets/Images/Search.svg}"/>-->
           </Button>
-          <TextBox x:Name="SearchNoteBox" Background="Transparent"  VerticalContentAlignment="Center" Watermark="Поиск" BorderThickness="0" Margin="0, 0, 10, 0" Grid.Column="1"></TextBox>
+          <TextBox Text="{Binding SearchText}"  Background="Transparent"  VerticalContentAlignment="Center" Watermark="Поиск" BorderThickness="0" Margin="0, 0, 10, 0" Grid.Column="1"></TextBox>
         </Grid>
       </Border>
       <Button Grid.Column="4" Width="50">

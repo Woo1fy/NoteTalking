@@ -1,14 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <LangVersion>11</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Remove="NoteTalking.Backend\**" />
+    <AvaloniaResource Remove="Repositories\**" />
+    <AvaloniaResource Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +33,9 @@
     <None Remove="Assets\search-icon.svg" />
     <None Remove="Assets\svgviewer-output.svg" />
     <None Remove="Assets\trash-can-31.svg" />
+    <None Remove="NoteTalking.Backend\**" />
+    <None Remove="Repositories\**" />
+    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +50,7 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.19" />
     <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.3.23174.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.3.23174.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -53,7 +61,33 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-preview.3.23174.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0-preview.3.23174.8" />
     <PackageReference Include="Svg.Skia" Version="0.5.18" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Remove="NoteTalking.Backend\**" />
+    <AvaloniaXaml Remove="Repositories\**" />
+    <AvaloniaXaml Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="NoteTalking.Backend\**" />
+    <Compile Remove="Repositories\**" />
+    <Compile Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="NoteTalking.Backend\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <EmbeddedResource Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="NoteTalking.Backend\**" />
+    <AdditionalFiles Remove="Repositories\**" />
+    <AdditionalFiles Remove="Services\**" />
   </ItemGroup>
 </Project>
