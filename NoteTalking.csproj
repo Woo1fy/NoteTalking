@@ -50,6 +50,8 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.19" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.19" />
     <PackageReference Include="Avalonia.Svg.Skia" Version="0.10.18" />
+    <PackageReference Include="Avalonia.Xaml.Interactions" Version="0.10.19" />
+    <PackageReference Include="Avalonia.Xaml.Interactivity" Version="0.10.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-preview.3.23174.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0-preview.3.23174.2">
       <PrivateAssets>all</PrivateAssets>
@@ -64,6 +66,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-preview.3.23174.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0-preview.3.23174.8" />
     <PackageReference Include="Svg.Skia" Version="0.5.18" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
   </ItemGroup>
 

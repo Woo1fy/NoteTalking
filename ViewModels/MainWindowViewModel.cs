@@ -13,13 +13,17 @@ public class MainWindowViewModel : ViewModelBase
 		get => _searchText;
 		set => this.RaiseAndSetIfChanged(ref _searchText, value);
 	}
-	
+
 	private ViewModelBase _content = null!;
-    
 	public ViewModelBase Content
 	{
 		get => _content;
 		private set => this.RaiseAndSetIfChanged(ref _content, value);
+	}
+
+	public MainWindowViewModel()
+	{
+			
 	}
 
 	public MainWindowViewModel(ApplicationContext dbContext)

@@ -8,7 +8,7 @@ public class NoteViewModel : ViewModelBase
 
     public NoteViewModel()
     {
-            
+        
     }
     public NoteViewModel(Note note)
     {

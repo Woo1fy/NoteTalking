@@ -5,6 +5,8 @@
              xmlns:viewModels="clr-namespace:NoteTalking.ViewModels"
              xmlns:views="clr-namespace:NoteTalking.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
              x:Class="NoteTalking.Views.NotesTabView">
     
     <Design.DataContext>
@@ -13,7 +15,100 @@
         <viewModels:NotesTabViewModel/>
     </Design.DataContext>
     
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+    </UserControl.Styles>
+    
     <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <Button BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="0, 30, 0, 30" HorizontalAlignment="Stretch">
+                <i:Interaction.Behaviors>
+                    <ia:EventTriggerBehavior EventName="LostFocus">
+                        <ia:InvokeCommandAction Command="{Binding CollapseExtPanelCommand}"/>
+                    </ia:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+                
+                <StackPanel>
+                <!-- <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" PointerCaptureLost="InputElement_OnPointerCaptureLost" IsVisible="{Binding IsCollapsed}"> -->
+                <!--     <Grid ColumnDefinitions="*, 70, 70, 70"> -->
+                <!--         <i:Interaction.Behaviors> -->
+                <!--             <ia:EventTriggerBehavior EventName="GotFocus"> -->
+                <!--                 <ia:InvokeCommandAction Command="{Binding ExpandExtPanelCommand}"/> -->
+                <!--             </ia:EventTriggerBehavior> -->
+                <!--         </i:Interaction.Behaviors> -->
+                <!--          -->
+                <!--         <TextBox TextWrapping="Wrap" VerticalContentAlignment="Center" BorderThickness="0" Watermark="Заметка..." Grid.Column="0"></TextBox> -->
+                <!--         <Button HorizontalAlignment="Center" Width="50" Height="50" Grid.Column="1"> -->
+                <!--             <Image Source="avares://NoteTalking/Assets/Checklist.png"/> -->
+                <!--         </Button> -->
+                <!--         <Button HorizontalAlignment="Center" Width="50" Height="50" Grid.Column="2"> -->
+                <!--             <Image Source="avares://NoteTalking/Assets/Brush.png"/> -->
+                <!--         </Button> -->
+                <!--         <Button HorizontalAlignment="Center" Width="50" Height="50" Grid.Column="3"> -->
+                <!--             <Image Source="avares://NoteTalking/Assets/Picture.png"/> -->
+                <!--         </Button> -->
+                <!--     </Grid> -->
+                <!-- </Border> -->
+                
+                <Border BorderBrush="Gray" BorderThickness="1" IsVisible="True" CornerRadius="10">
+                    <!-- {Binding IsExpanded} -->
+                    <Grid>
+                      <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="40"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                       
+                       <TextBox Watermark="Введите заголовок" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" BorderThickness="0" TextWrapping="Wrap" VerticalContentAlignment="Center"></TextBox>
+                        <Button HorizontalAlignment="Right" Width="50" Height="50" Grid.Row="0" Grid.Column="8">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <TextBox Name="NoteTextBox" Padding="10, 20, 0, 20" Watermark="Заметка" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9" BorderThickness="0" TextWrapping="Wrap" VerticalContentAlignment="Center"></TextBox>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="3">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="4">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="5">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="6">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button HorizontalAlignment="Center" Grid.Row="2" Grid.Column="7">
+                            <Image Source="avares://NoteTalking/Assets/Brush.png"/>
+                        </Button>
+                        <Button  HorizontalAlignment="Right" Padding="0, 0, 40, 0" Grid.Row="2" Grid.Column="8">
+                            Закрыть
+                        </Button>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            </Button>
+        </StackPanel>
         <ItemsControl Items="{Binding SearchResults}" Background="Transparent" Margin="0 20">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
